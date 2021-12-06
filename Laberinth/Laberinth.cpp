@@ -28,8 +28,7 @@ void SpaceLine();
 void ExteriorWalls(int x, int y);
 void PlayerMovement(Player player);
 void LaberinthExit(int x, int y);
-void LaberinthWallsY(int x, int y);
-void LaberinthWallsX(int x, int y);
+void LaberinthWalls(int x, int y);
 void GameDisplay();
 void Color(int typeColor);
 void Win();
@@ -136,17 +135,13 @@ void LaberinthGrid(Player player)
 	{
 		for (int x = 0; x < width; x++)
 		{
-
-
 			LaberinthArray[x][y] = 45;
 			LaberinthArray[xPos][yPos] = 80;
 
 			//Laberinth walls
 			ExteriorWalls(x, y);
 			LaberinthExit(x, y);
-			LaberinthWallsY(x, y);
-			LaberinthWallsX(x, y);
-
+			LaberinthWalls(x, y);
 
 			//Player arrives to victory
 
@@ -154,8 +149,7 @@ void LaberinthGrid(Player player)
 			{
 				Win();
 			}
-
-			cout << LaberinthArray[x][y] << " ";
+			cout << LaberinthArray[x][y]<< " ";
 		}
 		cout << endl;
 	}
@@ -181,8 +175,9 @@ void LaberinthExit(int x, int y)
 	}
 }
 
-void LaberinthWallsY(int x, int y)
+void LaberinthWalls(int x, int y)
 {
+	//Laberinth walls Y-Direction
 	for (int y = 15; y < 23; y++)
 	{
 		LaberinthArray[4][y] = 4;
@@ -221,10 +216,8 @@ void LaberinthWallsY(int x, int y)
 	{
 		LaberinthArray[36][y] = 4;
 	}
-}
 
-void LaberinthWallsX(int x, int y)
-{
+	//Laberithn walls X-Direction
 	for (int x = 0; x < 12; x++)
 	{
 		LaberinthArray[x][11] = 4;
